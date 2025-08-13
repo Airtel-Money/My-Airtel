@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Airtel - Page d'accueil</title>
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-color: #f8f8f8;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+
+    /* Section logo */
+    .logo-section {
+        background-color: #e60000;
+        text-align: center;
+        padding: 30px 20px;
+    }
+    .logo-section img {
+        max-width: 200px;
+        height: auto;
+        animation: bounceSlow 3s ease-in-out infinite;
+    }
+    @keyframes bounceSlow {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+        100% { transform: scale(1); }
+    }
+
+    /* Section bouton */
+    .button-section {
+        background-color: white;
+        text-align: center;
+        padding: 20px;
+        position: relative;
+    }
+    .download-btn {
+        display: inline-block;
+        padding: 20px 28px;
+        background: linear-gradient(90deg, #e60000, #cc0000);
+        color: white;
+        border-radius: 30px;
+        font-weight: bold;
+        text-decoration: none;
+        font-size: 1.1em;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .download-btn:hover {
+        transform: scale(1.05);
+        box-shadow: 0 6px 14px rgba(0,0,0,0.25);
+    }
+
+    /* Texte avertissement sous le bouton */
+    .warning-text {
+        margin-top: 15px;
+        font-size: 1em;
+        color: #b03a3a;
+        font-weight: 600;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+        max-width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .warning-text svg {
+        width: 28px;
+        height: 28px;
+        fill: #b03a3a;
+        flex-shrink: 0;
+    }
+
+    /* Galerie d’images */
+    .image-section {
+        background-color: white;
+        padding: 20px;
+        padding-bottom: 60px; /* plus d’espace pour dots */
+        border-bottom: 3px solid #e60000;
+        max-width: 600px;
+        margin: 0 auto;
+        position: relative;
+        overflow: hidden;
+        border-radius: 10px;
+        user-select: none;
+    }
+    .image-slider {
+        display: flex;
+        transition: transform 0.6s ease-in-out;
+        width: 100%;
+    }
+    .image-slider img {
+        width: 100%;
+        max-height: 350px;
+        object-fit: contain;
+        border-radius: 10px;
+        flex-shrink: 0;
+    }
+
+    /* Flèches */
+    .arrow {
+        position: absolute;
+        top: 80%;
+        transform: translateY(-50%);
+        background-color: rgba(230,0,0,0.8);
+        border: none;
+        color: white;
+        font-size: 2em;
+        padding: 5px 5px;
+        cursor: pointer;
+        border-radius: 100%;
+        user-select: none;
+        transition: background-color 0.3s ease;
+        z-index: 10;
+    }
+    .arrow:hover {
+        background-color: #e60000;
+    }
+    .arrow-left {
+        left: 10px;
+    }
+    .arrow-right {
+        right: 10px;
+    }
+
+    /* Dots */
+    .dots {
+        position: absolute;
+        bottom: 15px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        user-select: none;
+    }
+    .dot {
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background-color: #ddd;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    .dot.active {
+        background-color: #e60000;
+    }
+
+    /* Pied de page */
+    footer {
+        background-color: #333;
+        padding: 20px;
+        margin-top: 120px;
+        text-align: left;
+        /* footer en pleine largeur */
+    }
+    footer a {
+        display: block;
+        color: white;
+        text-decoration: none;
+        padding: 8px 0;
+        font-size: 1em;
+    }
+    footer a:hover {
+        text-decoration: underline;
+    }
+    
+    /* Responsive */
+
+@media (max-width: 700px) {
+    .logo-section img {
+        max-width: 150px;
+    }
+    .image-section {
+        max-width: 90%;
+        margin-bottom: 30px;
+        padding: 15px;
+        padding-bottom: 50px;
+    }
+    .image-slider img {
+        max-height: 200px;
+    }
+    .download-btn {
+        padding: 15px 24px;
+        font-size: 1em;
+    }
+    footer {
+        padding: 15px 10px;
+        font-size: 0.95em;
+    }
+    .arrow {
+        font-size: 1.5em;
+        padding: 5px 10px;
+    }
+    .warning-text {
+        max-width: 90%;
+        font-size: 0.9em;
+        gap: 8px;
+    }
+}
+</style>
+</head>
+<body>
+
+    <!-- Section logo -->
+    <div class="logo-section">
+        <img src="logos/My-Airtel.png" alt="Logo Airtel" />
+    </div>
+
+    <!-- Section bouton + texte avertissement -->
+    <div class="button-section">
+        <a href="https://github.com/Airtel-Money/My-Airtel/releases/download/NetWork/MyAirtel.apk" class="download-btn">Télécharger l'application</a>
+        <div class="warning-text" role="alert">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" aria-label="Avertissement">
+                <path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/>
+            </svg>
+            Si vous utilisez déjà une ancienne version de l'application, il est préférable de désinstaller l'ancienne version avant d'installer la nouvelle pour éviter tout conflit.
+        </div>
+    </div>
+
+    <!-- Galerie d’images -->
+    <div class="image-section" aria-label="Galerie promotionnelle">
+        <button class="arrow arrow-left" aria-label="Image précédente">&#10094;</button>
+        <div class="image-slider" id="image-slider">
+            <img src="logos/AirtelMoney.png" alt="Airtel Money" />
+            <img src="logos/AirtelMoney2.png" alt="Promotion 2" />
+            <img src="logos/AirtelMoney3.png" alt="Promotion 3" />
+            <img src="logos/AirtelMoney4.png" alt="Promotion 4" />
+        </div>
+        <button class="arrow arrow-right" aria-label="Image suivante">&#10095;</button>
+
+        <div class="dots" id="dots">
+            <span class="dot active" data-index="0" role="button" tabindex="0" aria-label="Image 1"></span>
+            <span class="dot" data-index="1" role="button" tabindex="0" aria-label="Image 2"></span>
+            <span class="dot" data-index="2" role="button" tabindex="0" aria-label="Image 3"></span>
+            <span class="dot" data-index="3" role="button" tabindex="0" aria-label="Image 4"></span>
+        </div>
+    </div>
+
+    <!-- Footer avec uniquement des liens -->
+    <footer>
+        <a href="https://www.airtel.in/" target="_blank" rel="noopener">À propos</a>
+        <a href="https://www.airtel.in/">Nous contacter</a>
+        <a href="https://www.airtel.in/">Service client</a>
+        <a href="https://www.airtel.in/">Plans et tarifs</a>
+        <a href="https://www.airtel.in/">FAQ</a>
+    </footer>
+
+<script>
+    const slider = document.getElementById('image-slider');
+    const dots = document.querySelectorAll('.dot');
+    const totalImages = dots.length;
+    let index = 0;
+    let intervalId;
+
+    function updateSlider() {
+        slider.style.transform = `translateX(-${index * 100}%)`;
+        dots.forEach(dot => dot.classList.remove('active'));
+        dots[index].classList.add('active');
+    }
+
+    function showNext() {
+        index = (index + 1) % totalImages;
+        updateSlider();
+    }
+
+    function showPrev() {
+        index = (index - 1 + totalImages) % totalImages;
+        updateSlider();
+    }
+
+    function goToImage(i) {
+        index = i;
+        updateSlider();
+    }
+
+    function resetInterval() {
+        clearInterval(intervalId);
+        intervalId = setInterval(showNext, 6000);
+    }
+
+    // Initial interval
+    intervalId = setInterval(showNext, 6000);
+
+    // Event listeners arrows
+    document.querySelector('.arrow-left').addEventListener('click', () => {
+        showPrev();
+        resetInterval();
+    });
+    document.querySelector('.arrow-right').addEventListener('click', () => {
+        showNext();
+        resetInterval();
+    });
+
+    // Event listeners dots
+    dots.forEach(dot => {
+        dot.addEventListener('click', () => {
+            goToImage(parseInt(dot.dataset.index));
+            resetInterval();
+        });
+        dot.addEventListener('keydown', e => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                goToImage(parseInt(dot.dataset.index));
+                resetInterval();
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
